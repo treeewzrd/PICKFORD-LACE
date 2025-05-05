@@ -20,4 +20,23 @@ const useStoreContext = () => {
   return useContext(StoreContext);
 };
 
-export { StoreProvider, useStoreContext };
+// Add these exports to match what's being imported in your components
+const useGlobalState = () => {
+  const [state] = useStoreContext();
+  return state;
+};
+
+const useGlobalDispatch = () => {
+  const [, dispatch] = useStoreContext();
+  return dispatch;
+};
+
+const GlobalProvider = ({ children }) => {
+  return (
+    <StoreProvider>
+      {children}
+    </StoreProvider>
+  );
+};
+
+export { StoreProvider, useStoreContext, useGlobalState, useGlobalDispatch, GlobalProvider };
