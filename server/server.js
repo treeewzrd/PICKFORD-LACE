@@ -4,6 +4,7 @@ const path = require('path');
 const db = require('./config/connection');
 const { typeDefs, resolvers } = require('./schemas');
 const { authMiddleware } = require('./utils/auth');
+const cors = require('cors');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -16,6 +17,7 @@ const server = new ApolloServer({
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(cors());
 
 // Serve up static assets ONLY in production
 if (process.env.NODE_ENV === 'production') {
