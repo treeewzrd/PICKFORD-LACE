@@ -1,175 +1,133 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { Container, Row, Col, Button, Image, Tabs, Tab } from 'react-bootstrap';
 import { useQuery } from '@apollo/client';
 import { QUERY_PRODUCT } from '../utils/queries';
-import { useStoreContext } from '../utils/GlobalState';
-import {
-  ADD_TO_CART,
-  UPDATE_CART_QUANTITY,
-  REMOVE_FROM_CART,
-  UPDATE_PRODUCTS,
-} from '../utils/actions';
-import { idbPromise } from '../utils/helpers';
-import { Container, Row, Col, Button, Spinner, Image, Form } from 'react-bootstrap';
+import { useGlobalDispatch } from '../utils/GlobalState';
 
-const ProductDetail = () => {
-  const [state, dispatch] = useStoreContext();
+function ProductDetail() {
   const { id } = useParams();
-  const [currentProduct, setCurrentProduct] = useState({});
-  const [quantity, setQuantity] = useState(1);
+  const navigate = useNavigate();
+  const dispatch = useGlobalDispatch();
+  const [activeImage, setActiveImage] = useState(0);
   
-  const { loading, data } = useQuery(QUERY_PRODUCT, {
-    variables: { id },
+  const { loading, error, data } = useQuery(QUERY_PRODUCT, {
+    variables: { id }
   });
   
-  const { products, cart } = state;
-  
-  useEffect(() => {
-    // If we have data from the query, set the current product
-    if (data) {
-      setCurrentProduct(data.product);
-      dispatch({
-        type: UPDATE_PRODUCTS,
-        products: [data.product],
-      });
-      
-      // Save to IndexedDB
-      idbPromise('products', 'put', data.product);
-    } 
-    // If we don't have data from the query, try to get it from IndexedDB
-    else if (!loading) {
-      idbPromise('products', 'get').then((indexedProducts) => {
-        const product = indexedProducts.find((p) => p._id === id);
-        if (product) {
-          setCurrentProduct(product);
-          dispatch({
-            type: UPDATE_PRODUCTS,
-            products: [product],
-          });
-        }
-      });
-    }
-  }, [data, loading, dispatch, id]);
-  
   const addToCart = () => {
-    const itemInCart = cart.find((cartItem) => cartItem._id === id);
-    
-    if (itemInCart) {
-      dispatch({
-        type: UPDATE_CART_QUANTITY,
-        _id: id,
-        purchaseQuantity: parseInt(quantity)
-      });
-      // Update IndexedDB
-      idbPromise('cart', 'put', {
-        ...itemInCart,
-        purchaseQuantity: parseInt(quantity)
-      });
-    } else {
-      dispatch({
-        type: ADD_TO_CART,
-        product: { ...currentProduct, purchaseQuantity: parseInt(quantity) }
-      });
-      // Add to IndexedDB
-      idbPromise('cart', 'put', { 
-        ...currentProduct, 
-        purchaseQuantity: parseInt(quantity) 
-      });
-    }
-  };
-  
-  const removeFromCart = () => {
     dispatch({
-      type: REMOVE_FROM_CART,
-      _id: currentProduct._id
+      type: 'ADD_TO_CART',
+      payload: {
+        ...data.product,
+        quantity: 1
+      }
     });
     
-    // Remove from IndexedDB
-    idbPromise('cart', 'delete', { ...currentProduct });
+    // Optional: Navigate to cart
+    // navigate('/cart');
   };
   
-  const handleQuantityChange = (e) => {
-    const value = parseInt(e.target.value);
-    if (value > 0 && value <= currentProduct.quantity) {
-      setQuantity(value);
-    }
-  };
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
   
-  if (loading) {
-    return (
-      <div className="d-flex justify-content-center">
-        <Spinner animation="border" role="status">
-          <span className="visually-hidden">Loading...</span>
-        </Spinner>
-      </div>
-    );
-  }
-  
-  if (!currentProduct?.name) {
-    return <h2>Product Not Found</h2>;
-  }
+  const { product } = data;
   
   return (
-    <Container className="my-5">
+    <Container className="py-4">
+      <Button 
+        variant="link" 
+        className="mb-3 ps-0" 
+        onClick={() => navigate(-1)}
+      >
+        &larr; Back to Products
+      </Button>
+      
       <Row>
-        <Col md={6}>
-          <Image 
-            src={`/images/${currentProduct.image}`} 
-            alt={currentProduct.name} 
-            fluid 
-            className="product-detail-image"
-          />
-        </Col>
-        <Col md={6}>
-          <h1>{currentProduct.name}</h1>
-          <p className="text-muted">
-            {currentProduct.category?.name}
-          </p>
-          <h3 className="my-3">${currentProduct.price?.toFixed(2)}</h3>
-          <p className="my-4">{currentProduct.description}</p>
-          
-          <div className="d-flex align-items-center mb-4">
-            <Form.Label className="me-3 mb-0">Quantity:</Form.Label>
-            <Form.Control
-              type="number"
-              min="1"
-              max={currentProduct.quantity}
-              value={quantity}
-              onChange={handleQuantityChange}
-              style={{ width: '80px' }}
-              disabled={currentProduct.quantity <= 0}
+        {/* Product Images */}
+        <Col md={6} className="mb-4">
+          <div className="product-main-image mb-3">
+            <Image 
+              src={product.images[activeImage]} 
+              alt={product.name} 
+              fluid 
+              className="vintage-image"
             />
-            <span className="ms-3">
-              {currentProduct.quantity > 0 
-                ? `${currentProduct.quantity} in stock` 
-                : 'Out of Stock'}
-            </span>
           </div>
           
-          <div className="d-grid gap-2">
-            <Button 
-              variant="primary" 
-              size="lg"
-              onClick={addToCart}
-              disabled={currentProduct.quantity <= 0}
-            >
-              Add to Cart
-            </Button>
+          {product.images.length > 1 && (
+            <Row>
+              {product.images.map((image, index) => (
+                <Col xs={3} key={index}>
+                  <Image 
+                    src={image} 
+                    alt={`${product.name} thumbnail ${index}`} 
+                    thumbnail 
+                    className={`product-thumbnail ${activeImage === index ? 'active' : ''}`}
+                    onClick={() => setActiveImage(index)}
+                  />
+                </Col>
+              ))}
+            </Row>
+          )}
+        </Col>
+        
+        {/* Product Details */}
+        <Col md={6}>
+          <div className="product-info">
+            <h1>{product.name}</h1>
+            <p className="era-badge">{product.era}</p>
+            <p className="category-badge">{product.category}</p>
+            <h2 className="price">${product.price.toFixed(2)}</h2>
             
-            {cart.some(p => p._id === currentProduct._id) && (
+            <div className="product-meta mb-4">
+              <p><strong>Condition:</strong> {product.condition}</p>
+              <p><strong>Size:</strong> {product.size}</p>
+            </div>
+            
+            <div className="mb-4">
               <Button 
-                variant="danger" 
-                size="lg"
-                onClick={removeFromCart}
+                variant="primary" 
+                size="lg" 
+                className="w-100 mb-2"
+                onClick={addToCart}
               >
-                Remove from Cart
+                Add to Cart
               </Button>
-            )}
+            </div>
+            
+            <Tabs defaultActiveKey="description" className="mb-3">
+              <Tab eventKey="description" title="Description">
+                <div className="p-3">
+                  <p>{product.description}</p>
+                </div>
+              </Tab>
+              <Tab eventKey="details" title="Details">
+                <div className="p-3">
+                  <p><strong>Era:</strong> {product.era}</p>
+                  <p><strong>Category:</strong> {product.category}</p>
+                  <p><strong>Condition:</strong> {product.condition}</p>
+                  <p><strong>Size:</strong> {product.size}</p>
+                </div>
+              </Tab>
+              <Tab eventKey="care" title="Care">
+                <div className="p-3">
+                  <h5>Vintage Care Instructions</h5>
+                  <ul>
+                    <li>Hand wash cold or dry clean</li>
+                    <li>Do not bleach</li>
+                    <li>Hang dry</li>
+                    <li>Iron on low heat if needed</li>
+                    <li>Store in a cool, dry place</li>
+                  </ul>
+                </div>
+              </Tab>
+            </Tabs>
           </div>
         </Col>
       </Row>
     </Container>
   );
-};
+}
 
 export default ProductDetail;

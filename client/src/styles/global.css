@@ -1,0 +1,107 @@
+/* Import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Courier+Prime&display=swap');
+
+/* CSS Variables */
+:root {
+  /* Primary Colors */
+  --desert-sand: #E6D2B5;
+  --tobacco-brown: #6B4423;
+  --faded-denim: #6F8FAF;
+  --neon-vegas: #FF6B6B;
+  --aged-paper: #F3E5AB;
+  --midnight-black: #2C2C2C;
+  
+  /* Functional Colors */
+  --background: var(--aged-paper);
+  --text-primary: var(--midnight-black);
+  --text-secondary: var(--tobacco-brown);
+  --accent: var(--neon-vegas);
+  
+  /* Typography */
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Courier Prime', monospace;
+  
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 4rem;
+}
+
+/* Base Styles */
+body {
+  font-family: var(--font-body);
+  background-color: var(--background);
+  color: var(--text-primary);
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--text-secondary);
+  margin-top: 0;
+}
+
+a {
+  color: var(--tobacco-brown);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--neon-vegas);
+}
+
+.btn-primary {
+  background-color: var(--tobacco-brown);
+  border-color: var(--tobacco-brown);
+}
+
+.btn-primary:hover {
+  background-color: var(--midnight-black);
+  border-color: var(--midnight-black);
+}
+
+/* Layout */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  padding: var(--spacing-md);
+}
+
+/* Vintage Effects */
+.vintage-card {
+  background-color: white;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.vintage-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Film grain effect */
+.film-grain {
+  position: relative;
+}
+
+.film-grain::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/images/grain.png');
+  opacity: 0.05;
+  pointer-events: none;
+}

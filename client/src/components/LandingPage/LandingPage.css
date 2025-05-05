@@ -1,0 +1,22 @@
+.vintage-landing {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  
+  .hero {
+    text-align: center;
+    padding: 4rem 2rem;
+    background-color: #F5E6D3;
+  }
+  
+  .hero h1 {
+    font-size: 3rem;
+    color: #3C3C3C;
+  }
+  
+  .collection-preview {
+    margin-top: 2rem;
+    text-align: center;
+  }
+  

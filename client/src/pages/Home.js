@@ -1,88 +1,124 @@
 import React from 'react';
-import { useQuery } from '@apollo/client';
-import { QUERY_PRODUCTS, QUERY_CATEGORIES } from '../utils/queries';
-import ProductItem from '../components/ProductItem';
-import CategoryMenu from '../components/CategoryMenu';
-import Cart from '../components/Cart';
-import { Container, Row, Col, Carousel, Button, Spinner } from 'react-bootstrap';
+import { Container, Row, Col, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { VintageTheme } from '../utils/theme';
 
-const Home = () => {
-  const { loading: productLoading, data: productData } = useQuery(QUERY_PRODUCTS);
-  const { loading: categoryLoading, data: categoryData } = useQuery(QUERY_CATEGORIES);
-  
-  const products = productData?.products || [];
-  const categories = categoryData?.categories || [];
-  
-  // Get featured products (first 3)
-  const featuredProducts = products.slice(0, 3);
-  
-  if (productLoading || categoryLoading) {
-    return (
-      <div className="d-flex justify-content-center my-5">
-        <Spinner animation="border" role="status">
-          <span className="visually-hidden">Loading...</span>
-        </Spinner>
-      </div>
-    );
-  }
-  
+function Home() {
   return (
-    <div>
-      <Carousel className="home-carousel mb-5">
-        <Carousel.Item>
-          <img
-            className="d-block w-100"
-            src="/images/banner1.jpg"
-            alt="Vintage Collection"
-          />
-          <Carousel.Caption>
-            <h1>Vintage Collection</h1>
-            <p>Discover timeless fashion pieces from the past</p>
-            <Button as={Link} to="/products" variant="light" size="lg">
-              Shop Now
-            </Button>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className="d-block w-100"
-            src="/images/banner2.jpg"
-            alt="New Arrivals"
-          />
-          <Carousel.Caption>
-            <h1>New Arrivals</h1>
-            <p>Check out our latest vintage finds</p>
-            <Button as={Link} to="/products" variant="light" size="lg">
-              Explore
-            </Button>
-          </Carousel.Caption>
-        </Carousel.Item>
-      </Carousel>
-      
-      <Container>
-        <h2 className="text-center mb-5">Shop by Category</h2>
-        <CategoryMenu categories={categories} />
-        
-        <h2 className="text-center my-5">Featured Products</h2>
-        <Row>
-          {featuredProducts.map(product => (
-            <Col key={product._id} md={4} className="mb-4">
-              <ProductItem product={product} />
+    <div className="home-page">
+      {/* Hero Section */}
+      <section className="hero-section film-grain">
+        <Container fluid className="p-0">
+          <div 
+            className="hero-banner" 
+            style={{ 
+              backgroundImage: "url('/images/vintage-background.jpg')",
+              height: "80vh",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              position: "relative"
+            }}
+          >
+            <div className="hero-overlay" style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              backgroundColor: "rgba(0,0,0,0.4)"
+            }}>
+              <Container className="h-100 d-flex flex-column justify-content-center text-white">
+                <h1 className="display-3 fw-bold">PICKFORD - LACE</h1>
+                <p className="lead">Vintage Treasures from the 50s to Y2K</p>
+                <div>
+                  <Button 
+                    as={Link} 
+                    to="/products" 
+                    variant="outline-light" 
+                    size="lg" 
+                    className="mt-3"
+                  >
+                    Explore Collection
+                  </Button>
+                </div>
+              </Container>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* Categories Section */}
+      <section className="categories-section py-5">
+        <Container>
+          <h2 className="text-center mb-4">Explore By Style</h2>
+          <Row>
+            {VintageTheme.categories.map((category, index) => (
+              <Col md={4} sm={6} key={index} className="mb-4">
+                <div className="category-card text-center p-4 h-100">
+                  <h3>{category}</h3>
+                  <Link to={`/products?category=${category}`} className="stretched-link">
+                    Explore
+                  </Link>
+                </div>
+              </Col>
+            ))}
+          </Row>
+        </Container>
+      </section>
+
+      {/* Era Section */}
+      <section className="era-section py-5 bg-light">
+        <Container>
+          <h2 className="text-center mb-4">Shop By Era</h2>
+          <Row className="justify-content-center">
+            {VintageTheme.eras.map((era, index) => (
+              <Col md={2} sm={4} xs={6} key={index} className="mb-3">
+                <Link 
+                  to={`/products?era=${era}`} 
+                  className="era-link d-block text-center p-3"
+                >
+                  <div className="era-circle mb-2">
+                    {era.substring(0, 2)}
+                  </div>
+                  <span>{era}</span>
+                </Link>
+              </Col>
+            ))}
+          </Row>
+        </Container>
+      </section>
+
+      {/* About Section */}
+      <section className="about-section py-5">
+        <Container>
+          <Row className="align-items-center">
+            <Col md={6}>
+              <h2>Our Vintage Aesthetic</h2>
+              <p>
+                Western Outlaw meets Mid-Century Modern. A journey through vintage - 
+                from leather-clad rebels to Vegas showgirls, punk rock edges to designer elegance.
+              </p>
+              <p>
+                Each piece tells a story, carefully curated to bring authentic vintage style 
+                to your wardrobe. From the rebellious spirit of the 50s to the bold statements of Y2K.
+              </p>
+              <Button as={Link} to="/about" variant="outline-dark">Learn More</Button>
             </Col>
-          ))}
-        </Row>
-        
-        <div className="text-center my-5">
-          <Button as={Link} to="/products" variant="outline-primary" size="lg">
-            View All Products
-          </Button>
-        </div>
-      </Container>
-      
-      <Cart />
+            <Col md={6}>
+              <div className="collage-container p-4">
+                {/* Placeholder for collage images */}
+                <div className="vintage-collage">
+                  <div className="collage-image image-1"></div>
+                  <div className="collage-image image-2"></div>
+                  <div className="collage-image image-3"></div>
+                </div>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </section>
     </div>
   );
-};
+}
 
 export default Home;
