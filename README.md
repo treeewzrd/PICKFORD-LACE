@@ -2,9 +2,10 @@
 
 ![PICKFORD-LACE Logo](path/to/logo.png) <!-- Consider adding a project logo -->
 
-> **Western Outlaw meets Mid-Century Modern.  
-> A journey through vintage - from leather-clad rebels  
-> to Vegas showgirls, punk rock edges to designer elegance.**
+> **named after mary pickford turn of the century actress who embodied elegance and rebellion,  
+> PICKFORD & LACE offers a curated journey through vintage fashion—
+ where turn-of-the-century  
+> elegance meets rugged , and everything in between.**
 
 ## Table of Contents
 - [Overview](#overview)
@@ -24,7 +25,7 @@
 
 ## Overview
 
-PICKFORD-LACE is a distinctive e-commerce platform specializing in curated vintage clothing that blends rebellious Western aesthetics with Mid-Century Modern sophistication. The platform offers a carefully selected collection spanning multiple eras and styles—from rugged leather pieces that evoke the spirit of outlaws to elegant showgirl-inspired ensembles and from edgy punk rock statements to refined designer classics. This unique cross-era approach creates a shopping experience that celebrates the boldness and craftsmanship of vintage fashion across all devices.
+Named after pioneering film actress Mary Pickford, PICKFORD-LACE celebrates the transformative power of style across eras. This distinctive e-commerce platform curates vintage fashion that spans from the delicate lace and refined glamour of early 20th century attire to the raw authenticity of DIY punk and motorcycle culture. Each piece tells a story—whether it's the meticulous craftsmanship of turn-of-the-century garments or the rebellious self-expression of handcrafted punk pieces. PICKFORD-LACE bridges these seemingly disparate worlds, offering a thoughtfully selected collection that honors both the elegance of bygone eras and the defiant spirit of counterculture fashion.
 
 ## Live Demo
 
@@ -37,7 +38,7 @@ The application is deployed and available at: [PICKFORD-LACE on Render](https://
 - **Responsive Design**: Optimized for desktop, tablet, and mobile devices
 - **User Authentication**: Secure account creation and login system
 - **Curated Collections**: Themed vintage collections with unique aesthetic narratives
-- **Advanced Filtering**: Browse by era, style, influence (Western, Mid-Century, etc.), size, and condition
+- **Advanced Filtering**: Browse by era, style, influence (Early Cinema, DIY Punk, etc.), size, and condition
 - **Shopping Cart**: Add, remove, and modify items before checkout
 - **Secure Checkout**: Integrated with Stripe for safe payment processing
 - **Order History**: Track past purchases and delivery status
@@ -49,7 +50,7 @@ The application is deployed and available at: [PICKFORD-LACE on Render](https://
 ## Screenshots
 
 ![Home Page](path/to/home-screenshot.png)
-*The main landing page showcasing the Western-meets-Mid-Century aesthetic*
+*The main landing page showcasing the range from elegant lace to punk DIY aesthetic*
 
 ![Product Detail](path/to/product-screenshot.png)
 *Detailed product view with multiple images, styling suggestions, and historical context*
@@ -122,16 +123,31 @@ The application is deployed and available at: [PICKFORD-LACE on Render](https://
    CLOUDINARY_API_SECRET=your_cloudinary_secret
    ```
 
-6. Start the development server:
+### Development
+
+To run the application in development mode:
+
+1. Start the server with nodemon watching for changes:
    ```bash
-   npm run develop
+   cd server
+   npm run watch
    ```
+
+2. In a separate terminal, start the client:
+   ```bash
+   cd client
+   npm run start
+   ```
+
+3. Open [http://localhost:3000](http://localhost:3000) to view the application in your browser
+
+> **Note:** Upon deployment to Render, these commands will be handled by the deployment configuration and you won't need to run them manually.
 
 ## Usage
 
 ### Customer Experience
 
-1. Explore curated collections that blend Western ruggedness with Mid-Century elegance
+1. Explore curated collections that range from early 20th century elegance to DIY punk authenticity
 2. Filter products by era, aesthetic influence, size, or price
 3. View detailed product information, historical context, and styling suggestions
 4. Add items to cart or wishlist
@@ -150,14 +166,15 @@ The application is deployed and available at: [PICKFORD-LACE on Render](https://
 
 ## Product Categories
 
-PICKFORD-LACE offers a distinctive range of vintage clothing and accessories that blend multiple aesthetics:
+PICKFORD-LACE offers a distinctive range of vintage clothing and accessories that span diverse aesthetics:
 
-- **Western Frontier**: Leather jackets, boots, denim, and rugged accessories with outlaw spirit
+- **Golden Age Glamour**: Pieces inspired by Mary Pickford's era of early cinema and the refined elegance of turn-of-the-century fashion
+- **Delicate Details**: Lace garments, intricate beadwork, and handcrafted embellishments from various periods
+- **DIY Punk**: Authentic handmade and modified garments from punk movements, celebrating individual expression and rebellion
+- **Motorcycle Culture**: Leather jackets, boots, and rugged accessories with stories of the open road
 - **Mid-Century Modern**: Clean lines, atomic patterns, and space-age influences from the 1950s-60s
-- **Showgirl Glamour**: Sequined, beaded, and feathered pieces inspired by Vegas entertainment
-- **Punk & DIY**: Edgy, statement pieces with attitude and cultural significance
 - **Designer Archive**: Curated high-end vintage from renowned fashion houses
-- **Decades**: Spanning 1940s through 1990s with authentic period pieces
+- **Decades**: Spanning 1900s through 1990s and Y2k period pieces
 - **Condition Grades**: Mint, Excellent, Good, Fair (all clearly described with detailed photos)
 
 ## Technical Architecture
@@ -219,12 +236,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Contact
 
-Timothy McGrath - [.email@example.com]
+Timothy McGrath - [your.email@example.com]
 
 Project Link: [https://github.com/treeewzrd/PICKFORD-LACE](https://github.com/treeewzrd/PICKFORD-LACE)
-
-License
-This project is licensed under the MIT License - see the LICENSE file for details.
-
 
 
