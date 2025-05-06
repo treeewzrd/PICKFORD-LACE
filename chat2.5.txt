@@ -1,0 +1,646 @@
+Dashboard
+Cody
+Prompts
+Public Code Search
+hey youve been running extremely slow and breaking things and making errors i really need your help with my project. this is my github https://github.com/treewzrd/PICKFORD---LACE these are my requirements Your group will use everything you’ve learned throughout this course to create a MERN stack single-page application that works with real-world data to solve a real-world challenge, with a focus on data and user demand. This project will provide you with the best opportunity to demonstrate your problem-solving skills, which employers will want to see during interviews. Once again, the user story and acceptance criteria will depend on the project that you create, but your project must fulfill the following requirements:* Use React for the front end.* Use GraphQL with a Node.js and Express.js server.* Use MongoDB and the Mongoose ODM for the database.* Use queries and mutations for retrieving, adding, updating, and deleting data.* Be deployed using Render (with data).* Use at least one GitHub Action in the project repository.* Have a polished UI.* Be responsive.* Be interactive (i.e., accept and respond to user input).* Include authentication (JWT).* Protect sensitive API key information on the server.* Have a clean repository that meets quality coding standards (file structure, naming conventions, best practices for class and id naming conventions, indentation, high-quality comments, etc.).* Have a high-quality README (with unique name, description, technologies used, screenshot, and link to deployed application).### CSS StylingInstead of using a CSS library like Bootstrap, consider one of the following suggestions:* Look into the concept of CSS-in-JS, which abstracts CSS to the component level, using JavaScript to describe styles in a declarative and maintainable way. Some popular libraries include [styled-components](https://styled-components.com/) and [Emotion](https://emotion.sh/docs/introduction).* Try using a component library, such as [Semantic UI](https://semantic-ui.com/), [Chakra UI](https://chakra-ui.com/), or [Ant Design](https://ant.design/).* Create all the CSS for your application just using CSS.Ultimately, it doesn't matter which of these options you choose&mdash;it just needs to look professional and be mobile-friendly. I had some aestheics stuff and componnts i wanted to add but right now i need to focus on getting evrything to work again. your last chat started breaking everything we built. the backend was working and now its not when i open server and hit npm run dev. you broke it. i have a mongodb account and a uri and password. i need your help finishing this project. what can i do so you know what code to help with, what code needs to be removed, and how we can get evrything working again.
+ 
+hey youve been running extremely slow and breaking things and making errors i really need your help with my project. this is my github https://github.com/treewzrd/PICKFORD---LACE these are my requirements Your group will use everything you’ve learned throughout this course to create a MERN stack single-page application that works with real-world data to solve a real-world challenge, with a focus on data and user demand. This project will provide you with the best opportunity to demonstrate your problem-solving skills, which employers will want to see during interviews. Once again, the user story and acceptance criteria will depend on the project that you create, but your project must fulfill the following requirements:
+
+
+
+* Use React for the front end.
+
+
+
+* Use GraphQL with a Node.js and Express.js server.
+
+
+
+* Use MongoDB and the Mongoose ODM for the database.
+
+
+
+* Use queries and mutations for retrieving, adding, updating, and deleting data.
+
+
+
+* Be deployed using Render (with data).
+
+
+
+* Use at least one GitHub Action in the project repository.
+
+
+
+* Have a polished UI.
+
+
+
+* Be responsive.
+
+
+
+* Be interactive (i.e., accept and respond to user input).
+
+
+
+* Include authentication (JWT).
+
+
+
+* Protect sensitive API key information on the server.
+
+
+
+* Have a clean repository that meets quality coding standards (file structure, naming conventions, best practices for class and id naming conventions, indentation, high-quality comments, etc.).
+
+
+
+* Have a high-quality README (with unique name, description, technologies used, screenshot, and link to deployed application).
+
+
+
+### CSS Styling
+
+
+
+Instead of using a CSS library like Bootstrap, consider one of the following suggestions:
+
+
+
+* Look into the concept of CSS-in-JS, which abstracts CSS to the component level, using JavaScript to describe styles in a declarative and maintainable way. Some popular libraries include [styled-components](https://styled-components.com/) and [Emotion](https://emotion.sh/docs/introduction).
+
+
+
+* Try using a component library, such as [Semantic UI](https://semantic-ui.com/), [Chakra UI](https://chakra-ui.com/), or [Ant Design](https://ant.design/).
+
+
+
+* Create all the CSS for your application just using CSS.
+
+
+
+Ultimately, it doesn't matter which of these options you choose&mdash;it just needs to look professional and be mobile-friendly. I had some aestheics stuff and componnts i wanted to add but right now i need to focus on getting evrything to work again. your last chat started breaking everything we built. the backend was working and now its not when i open server and hit npm run dev. you broke it. i have a mongodb account and a uri and password. i need your help finishing this project. what can i do so you know what code to help with, what code needs to be removed, and how we can get evrything working again.
+
+
+Context
+— none fetched
+I understand your frustration, and I apologize for any issues caused previously. Let's systematically fix your project and get it working again. First, let's examine the current state of your project and identify what's broken.
+
+Initial Assessment
+Let's start by checking the server-side issues since you mentioned the backend is not working when you run npm run dev.
+
+First, let's check your server setup and connection to MongoDB.
+Then we'll verify your GraphQL schema and resolvers.
+Finally, we'll ensure the frontend is properly connected to the backend.
+Server-Side Fixes
+Let's start by fixing your server connection:
+
+Check your .env file in the server directory. Make sure it has your MongoDB URI with the correct password.
+cd server
+
+Create or update your .env file:
+
+touch .env
+
+Your .env file should contain:
+
+MONGODB_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+
+.env
+Let's check your server configuration:
+cat server.js
+
+Let's fix your server.js file:
+
+const express = require('express');
+const { ApolloServer } = require('apollo-server-express');
+const path = require('path');
+const { authMiddleware } = require('./utils/auth');
+const { typeDefs, resolvers } = require('./schemas');
+const db = require('./config/connection');
+
+const PORT = process.env.PORT || 3001;
+const app = express();
+
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  context: authMiddleware,
+});
+
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+
+// if we're in production, serve client/build as static assets
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../client/build')));
+}
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
+
+// Create a new instance of an Apollo server with the GraphQL schema
+const startApolloServer = async () => {
+  await server.start();
+  server.applyMiddleware({ app });
+  
+  db.once('open', () => {
+    app.listen(PORT, () => {
+      console.log(`API server running on port ${PORT}!`);
+      console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
+    });
+  });
+};
+
+// Call the async function to start the server
+startApolloServer();
+
+server.js
+Let's check your MongoDB connection:
+const mongoose = require('mongoose');
+require('dotenv').config();
+
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/pickford-lace', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
+module.exports = mongoose.connection;
+
+connection.js
+Let's check your package.json to ensure all dependencies are correct:
+{
+  "name": "pickford-lace-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "watch": "nodemon server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server-express": "^3.6.2",
+    "bcrypt": "^5.0.0",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.2",
+    "graphql": "^16.3.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.1.8"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.3"
+  }
+}
+
+package.json
+Let's check your GraphQL schema:
+const { gql } = require('apollo-server-express');
+
+const typeDefs = gql`
+  type User {
+    _id: ID
+    username: String
+    email: String
+    password: String
+    orders: [Order]
+  }
+
+  type Product {
+    _id: ID
+    name: String
+    description: String
+    image: String
+    price: Float
+    quantity: Int
+    category: Category
+  }
+
+  type Category {
+    _id: ID
+    name: String
+  }
+
+  type Order {
+    _id: ID
+    purchaseDate: String
+    products: [Product]
+  }
+
+  type Auth {
+    token: ID!
+    user: User
+  }
+
+  type Query {
+    users: [User]
+    user(username: String!): User
+    products(category: ID, name: String): [Product]
+    product(_id: ID!): Product
+    categories: [Category]
+    orders: [Order]
+    order(_id: ID!): Order
+    me: User
+  }
+
+  type Mutation {
+    addUser(username: String!, email: String!, password: String!): Auth
+    login(email: String!, password: String!): Auth
+    addOrder(products: [ID]!): Order
+    updateProduct(_id: ID!, quantity: Int!): Product
+    removeProduct(_id: ID!): Product
+  }
+`;
+
+module.exports = typeDefs;
+
+typeDefs.js
+Let's check your resolvers:
+const { AuthenticationError } = require('apollo-server-express');
+const { User, Product, Category, Order } = require('../models');
+const { signToken } = require('../utils/auth');
+
+const resolvers = {
+  Query: {
+    categories: async () => {
+      return await Category.find();
+    },
+    products: async (parent, { category, name }) => {
+      const params = {};
+
+      if (category) {
+        params.category = category;
+      }
+
+      if (name) {
+        params.name = {
+          $regex: name,
+          $options: 'i'
+        };
+      }
+
+      return await Product.find(params).populate('category');
+    },
+    product: async (parent, { _id }) => {
+      return await Product.findById(_id).populate('category');
+    },
+    user: async (parent, { username }) => {
+      return User.findOne({ username }).populate({
+        path: 'orders.products',
+        populate: 'category'
+      });
+    },
+    users: async () => {
+      return User.find().populate({
+        path: 'orders.products',
+        populate: 'category'
+      });
+    },
+    order: async (parent, { _id }, context) => {
+      if (context.user) {
+        const user = await User.findById(context.user._id).populate({
+          path: 'orders.products',
+          populate: 'category'
+        });
+
+        return user.orders.id(_id);
+      }
+
+      throw new AuthenticationError('Not logged in');
+    },
+    orders: async (parent, args, context) => {
+      if (context.user) {
+        const user = await User.findById(context.user._id).populate({
+          path: 'orders.products',
+          populate: 'category'
+        });
+
+        return user.orders;
+      }
+
+      throw new AuthenticationError('Not logged in');
+    },
+    me: async (parent, args, context) => {
+      if (context.user) {
+        return User.findOne({ _id: context.user._id }).populate({
+          path: 'orders.products',
+          populate: 'category'
+        });
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    }
+  },
+  Mutation: {
+    addUser: async (parent, args) => {
+      const user = await User.create(args);
+      const token = signToken(user);
+
+      return { token, user };
+    },
+    login: async (parent, { email, password }) => {
+      const user = await User.findOne({ email });
+
+      if (!user) {
+        throw new AuthenticationError('Incorrect credentials');
+      }
+
+      const correctPw = await user.isCorrectPassword(password);
+
+      if (!correctPw) {
+        throw new AuthenticationError('Incorrect credentials');
+      }
+
+      const token = signToken(user);
+
+      return { token, user };
+    },
+    addOrder: async (parent, { products }, context) => {
+      if (context.user) {
+        const order = new Order({ products });
+
+        await User.findByIdAndUpdate(context.user._id, { $push: { orders: order } });
+
+        return order;
+      }
+
+      throw new AuthenticationError('Not logged in');
+    },
+    updateProduct: async (parent, { _id, quantity }) => {
+      const decrement = Math.abs(quantity) * -1;
+
+      return await Product.findByIdAndUpdate(
+        _id,
+        { $inc: { quantity: decrement } },
+        { new: true }
+      );
+    },
+    removeProduct: async (parent, { _id }) => {
+      return await Product.findByIdAndDelete(_id);
+    }
+  }
+};
+
+module.exports = resolvers;
+
+resolvers.js
+Let's check your authentication utility:
+const jwt = require('jsonwebtoken');
+require('dotenv').config();
+
+const secret = process.env.JWT_SECRET || 'mysecretsshhhhh';
+const expiration = '2h';
+
+module.exports = {
+  authMiddleware: function ({ req }) {
+    // allows token to be sent via req.body, req.query, or headers
+    let token = req.body.token || req.query.token || req.headers.authorization;
+
+    // ["Bearer", "<tokenvalue>"]
+    if (req.headers.authorization) {
+      token = token.split(' ').pop().trim();
+    }
+
+    if (!token) {
+      return req;
+    }
+
+    try {
+      const { data } = jwt.verify(token, secret, { maxAge: expiration });
+      req.user = data;
+    } catch {
+      console.log('Invalid token');
+    }
+
+    return req;
+  },
+  signToken: function ({ username, email, _id }) {
+    const payload = { username, email, _id };
+    return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
+  },
+};
+
+auth.js
+Let's check your models:
+const mongoose = require('mongoose');
+const { Schema } = mongoose;
+const bcrypt = require('bcrypt');
+const Order = require('./Order');
+
+const userSchema = new Schema({
+  username: {
+    type: String,
+    required: true,
+    unique: true,
+    trim: true
+  },
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+    match: [/.+@.+\..+/, 'Must match an email address!']
+  },
+  password: {
+    type: String,
+    required: true,
+    minlength: 5
+  },
+  orders: [Order.schema]
+});
+
+// set up pre-save middleware to create password
+userSchema.pre('save', async function(next) {
+  if (this.isNew || this.isModified('password')) {
+    const saltRounds = 10;
+    this.password = await bcrypt.hash(this.password, saltRounds);
+  }
+
+  next();
+});
+
+// compare the incoming password with the hashed password
+userSchema.methods.isCorrectPassword = async function(password) {
+  return await bcrypt.compare(password, this.password);
+};
+
+const User = mongoose.model('User', userSchema);
+
+module.exports = User;
+
+User.js
+const mongoose = require('mongoose');
+const { Schema } = mongoose;
+
+const productSchema = new Schema({
+  name: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  description: {
+    type: String
+  },
+  image: {
+    type: String
+  },
+  price: {
+    type: Number,
+    required: true,
+    min: 0.99
+  },
+  quantity: {
+    type: Number,
+    min: 0,
+    default: 0
+  },
+  category: {
+    type: Schema.Types.ObjectId,
+    ref: 'Category',
+    required: true
+  }
+});
+
+const Product = mongoose.model('Product', productSchema);
+
+module.exports = Product;
+
+Product.js
+const mongoose = require('mongoose');
+const { Schema } = mongoose;
+
+const categorySchema = new Schema({
+  name: {
+    type: String,
+    required: true,
+    trim: true
+  }
+});
+
+const Category = mongoose.model('Category', categorySchema);
+
+module.exports = Category;
+
+Category.js
+const mongoose = require('mongoose');
+const { Schema } = mongoose;
+
+const orderSchema = new Schema({
+  purchaseDate: {
+    type: Date,
+    default: Date.now
+  },
+  products: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Product'
+    }
+  ]
+});
+
+const Order = mongoose.model('Order', orderSchema);
+
+module.exports = Order;
+
+Order.js
+const User = require('./User');
+const Product = require('./Product');
+const Category = require('./Category');
+const Order = require('./Order');
+
+module.exports = { User, Product, Category, Order };
+
+index.js
+Client-Side Setup
+Let's check your client-side setup:
+
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+} from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
+
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
+import NoMatch from './pages/NoMatch';
+import Nav from './components/Nav';
+import ProductDetail from './pages/ProductDetail';
+import OrderHistory from './pages/OrderHistory';
+
+const httpLink = createHttpLink({
+  uri: '/graphql',
+});
+
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem('id_token');
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
+
+const client = new ApolloClient({
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache(),
+});
+
+function App() {
+  return (
+    <ApolloProvider client={client}>
+      <Router>
+        <div>
+          <Nav />
+          <Routes>
+            <Route 
+              path="/" 
+              element={<Home />} 
+            />
+            <Route 
+              path="/login" 
+              element={<Login />} 
+            />
+            <Route 
+              path="/signup" 
+              element={<Signup />} 
+            />
+            <Route 
+              path="/products/:id" 
+              element={<ProductDetail />} 
+            />
+            <Route 
+              path="/orderHistory" 
+              element={<OrderHistory />} 
+            />
+            <Route 
+              path="*" 
+              element={<NoMatch />} 
+            />
+          </Routes>
+        </div>
+      </Router>
+    </ApolloProvider>
+  );
+}
+
+export default App;
+
+App.js
+Steps to Fix the Project
+Now that we've reviewed the code, let's fix the issues:
+
+First, let's install all dependencies:
+cd server &&
+
+
+
