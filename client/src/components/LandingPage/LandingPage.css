@@ -19,4 +19,54 @@
     margin-top: 2rem;
     text-align: center;
   }
+  .landing-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.landing-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.landing-logo {
+  width: 50%;
+  max-width: 400px;
+  margin-bottom: 20px;
+}
+
+.enter-prompt {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.landing-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+/* Optional - if you want to give a hover effect for the "Enter" text */
+.landing-content:hover .enter-prompt {
+  text-decoration: underline;
+  transform: scale(1.1);
+  transition: transform 0.3s ease-in-out, text-decoration 0.3s;
+}
+
   
