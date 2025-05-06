@@ -1,11 +1,11 @@
-# PICKFORD-LACE: Vintage Clothing E-Commerce Platform
+# Pickford & Lace: Vintage Apparel Marketplace
 
-![PICKFORD-LACE Logo](path/to/logo.png) <!-- Consider adding a project logo -->
+![Pickford & Lace Logo](path/to/logo.png) <!-- Consider adding a project logo -->
 
-> **named after mary pickford turn of the century actress who embodied elegance and rebellion,  
-> PICKFORD & LACE offers a curated journey through vintage fashion—
- where turn-of-the-century  
-> elegance meets rugged , and everything in between.**
+> **Pickford & Lace is a vintage clothing e-commerce platform inspired by the golden age of Hollywood  
+> and named after the iconic Mary Pickford. The application offers a curated collection of vintage apparel  
+> that bridges the gap between rags and riches - from delicate lace pieces and frilly feminine garments  
+> to rugged menswear including vintage tees, motorcycle gear, boots, and distressed workwear.**
 
 ## Table of Contents
 - [Overview](#overview)
@@ -25,11 +25,11 @@
 
 ## Overview
 
-Named after pioneering film actress Mary Pickford, PICKFORD-LACE celebrates the transformative power of style across eras. This distinctive e-commerce platform curates vintage fashion that spans from the delicate lace and refined glamour of early 20th century attire to the raw authenticity of DIY punk and motorcycle culture. Each piece tells a story—whether it's the meticulous craftsmanship of turn-of-the-century garments or the rebellious self-expression of handcrafted punk pieces. PICKFORD-LACE bridges these seemingly disparate worlds, offering a thoughtfully selected collection that honors both the elegance of bygone eras and the defiant spirit of counterculture fashion.
+Pickford & Lace Vintage Apparel Marketplace Pickford & Lace is a vintage clothing e-commerce platform inspired by the golden age of Hollywood and named after the iconic Mary Pickford. The application offers a curated collection of vintage apparel that bridges the gap between rags and riches - from delicate lace pieces and frilly feminine garments to rugged menswear including vintage tees, motorcycle gear, boots, and distressed workwear.
 
 ## Live Demo
 
-The application is deployed and available at: [PICKFORD-LACE on Render](https://pickford-lace.onrender.com)
+The application is deployed and available at: [Pickford & Lace on Render](https://pickford-lace.onrender.com)
 
 ![Application Screenshot](path/to/screenshot.png)
 
@@ -37,8 +37,8 @@ The application is deployed and available at: [PICKFORD-LACE on Render](https://
 
 - **Responsive Design**: Optimized for desktop, tablet, and mobile devices
 - **User Authentication**: Secure account creation and login system
-- **Curated Collections**: Themed vintage collections with unique aesthetic narratives
-- **Advanced Filtering**: Browse by era, style, influence (Early Cinema, DIY Punk, etc.), size, and condition
+- **Curated Collections**: Themed vintage collections spanning elegant to rugged aesthetics
+- **Advanced Filtering**: Browse by era, style, gender, size, and condition
 - **Shopping Cart**: Add, remove, and modify items before checkout
 - **Secure Checkout**: Integrated with Stripe for safe payment processing
 - **Order History**: Track past purchases and delivery status
@@ -50,10 +50,10 @@ The application is deployed and available at: [PICKFORD-LACE on Render](https://
 ## Screenshots
 
 ![Home Page](path/to/home-screenshot.png)
-*The main landing page showcasing the range from elegant lace to punk DIY aesthetic*
+*The main landing page showcasing the range from delicate lace to rugged vintage workwear*
 
 ![Product Detail](path/to/product-screenshot.png)
-*Detailed product view with multiple images, styling suggestions, and historical context*
+*Detailed product view with multiple images, sizing information, and condition details*
 
 ![Shopping Cart](path/to/cart-screenshot.png)
 *User shopping cart with checkout options*
@@ -147,9 +147,9 @@ To run the application in development mode:
 
 ### Customer Experience
 
-1. Explore curated collections that range from early 20th century elegance to DIY punk authenticity
-2. Filter products by era, aesthetic influence, size, or price
-3. View detailed product information, historical context, and styling suggestions
+1. Explore curated collections of vintage apparel ranging from elegant to rugged
+2. Filter products by era, style, gender, size, or price
+3. View detailed product information, measurements, and condition notes
 4. Add items to cart or wishlist
 5. Create an account or checkout as guest
 6. Complete purchase using secure Stripe payment
@@ -166,15 +166,16 @@ To run the application in development mode:
 
 ## Product Categories
 
-PICKFORD-LACE offers a distinctive range of vintage clothing and accessories that span diverse aesthetics:
+Pickford & Lace offers a diverse range of vintage clothing and accessories:
 
-- **Golden Age Glamour**: Pieces inspired by Mary Pickford's era of early cinema and the refined elegance of turn-of-the-century fashion
-- **Delicate Details**: Lace garments, intricate beadwork, and handcrafted embellishments from various periods
-- **DIY Punk**: Authentic handmade and modified garments from punk movements, celebrating individual expression and rebellion
-- **Motorcycle Culture**: Leather jackets, boots, and rugged accessories with stories of the open road
-- **Mid-Century Modern**: Clean lines, atomic patterns, and space-age influences from the 1950s-60s
-- **Designer Archive**: Curated high-end vintage from renowned fashion houses
-- **Decades**: Spanning 1900s through 1990s and Y2k period pieces
+- **Golden Age Glamour**: Elegant pieces inspired by Mary Pickford's era and early Hollywood
+- **Feminine Vintage**: Delicate lace garments, frilly dresses, and ornate blouses from various decades
+- **Menswear Classics**: Well-crafted suits, jackets, and formal attire from different periods
+- **Vintage Tees**: Authentic t-shirts from bands, events, and cultural moments
+- **Motorcycle Culture**: Leather jackets, boots, and accessories with character and patina
+- **Workwear Heritage**: Distressed denim, canvas work jackets, and utility clothing with history
+- **Decades**: Spanning 1920s through 1990s with authentic period pieces
+- **Accessories**: Jewelry, hats, bags, belts, and other vintage accents
 - **Condition Grades**: Mint, Excellent, Good, Fair (all clearly described with detailed photos)
 
 ## Technical Architecture
@@ -201,13 +202,13 @@ The GraphQL API provides resolvers for:
 
 ## Development Process
 
-The development of PICKFORD-LACE followed an iterative approach:
+The development of Pickford & Lace followed an iterative approach:
 
 1. **Planning Phase**: Requirements gathering, brand identity development, and system design
 2. **Backend Development**: Setting up MongoDB, Apollo Server, and GraphQL schema
 3. **Frontend Implementation**: Building React components and Apollo Client integration
 4. **E-commerce Features**: Implementing product browsing, cart, and checkout
-5. **Content Development**: Creating style stories and collection narratives
+5. **Content Development**: Creating product listings and collection narratives
 6. **Payment Processing**: Integrating Stripe for secure transactions
 7. **Testing & Refinement**: User testing and performance optimization
 8. **Deployment**: Deploying to Render with CI/CD pipeline
@@ -239,5 +240,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 Timothy McGrath - [your.email@example.com]
 
 Project Link: [https://github.com/treeewzrd/PICKFORD-LACE](https://github.com/treeewzrd/PICKFORD-LACE)
-
-
