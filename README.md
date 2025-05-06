@@ -1,76 +1,124 @@
-# Getting Started with Create React App
+Pickford & Lace
+Vintage Apparel Marketplace
+Pickford & Lace is a vintage clothing e-commerce platform inspired by the golden age of Hollywood and named after the iconic Mary Pickford. The application offers a curated collection of vintage apparel that bridges the gap between rags and riches - from delicate lace pieces and frilly feminine garments to rugged menswear including vintage tees, motorcycle gear, boots, and distressed workwear.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Table of Contents
+Description
+Features
+Technologies Used
+Badges
+Installation
+Usage
+API Endpoints
+Deployment
+Team
+Future Development
+Acknowledgements
+Collaboration
+License
+Description
+Pickford & Lace is a full-stack e-commerce application built with the MERN stack (MongoDB, Express.js, React, Node.js) and GraphQL. The platform offers a vintage-inspired shopping experience with a focus on unique, curated clothing items that tell a story.
 
-## Available Scripts
+The application features user authentication, product browsing, shopping cart functionality, and a secure checkout process. The vintage aesthetic is reflected in the design, with a nostalgic color palette and typography that evokes the glamour of old Hollywood while maintaining modern usability.
 
-In the project directory, you can run:
+Features
+User Authentication: Secure signup and login functionality
+Product Browsing: Browse products by category with detailed product pages
+Shopping Cart: Add, remove, and update quantities of items in your cart
+Responsive Design: Fully responsive layout for all device sizes
+Vintage-Inspired UI: Nostalgic design elements that complement the product offerings
+Technologies Used
+Frontend
+React.js
+Apollo Client
+React Bootstrap
+JWT for authentication
+CSS Variables for theming
+Backend
+Node.js
+Express.js
+Apollo Server
+GraphQL
+MongoDB with Mongoose
+JWT for authentication
+Development & Deployment
+Git for version control
+npm for package management
+Render for deployment
+Badges
+Installation
+To run this application locally:
 
-### `npm start`
+Clone the repository:
+git clone https://github.com/treewzrd/PICKFORD---LACE.git
+cd PICKFORD---LACE
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Install dependencies for both client and server:
+# Install server dependencies
+cd server
+npm install
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# Install client dependencies
+cd ../client
+npm install
 
-### `npm test`
+Create a .env file in the server directory with your MongoDB connection string and JWT secret:
+MONGODB_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Start the development servers:
+# Start the server
+cd server
+npm run watch
 
-### `npm run build`
+# In a new terminal, start the client
+cd client
+npm start
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Open your browser and navigate to http://localhost:3000
+Usage
+Browse Products: View all products or filter by category
+Product Details: Click on a product to view detailed information
+User Account: Create an account to save your information for faster checkout
+Shopping Cart: Add items to your cart and proceed to checkout
+Checkout: Complete your purchase with our secure checkout process
+API Endpoints
+The application uses GraphQL for all data operations. The main GraphQL endpoint is:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+/graphql
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Key queries and mutations include:
 
-### `npm run eject`
+getProducts: Fetch all products or filter by category
+getProduct: Fetch a single product by ID
+getUser: Fetch the current user's information
+login: Authenticate a user
+addUser: Create a new user account
+addOrder: Create a new order
+updateProduct: Update product information
+Deployment
+The application is deployed on Render:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Live Application: https://pickford-lace.onrender.com
+API Endpoint: https://pickford-lace-api.onrender.com/graphql
+Team
+Timothy McGrath - Full Stack Developer
+Future Development
+Enhanced Product Filtering: Add more advanced filtering options by size, era, condition, etc.
+Wishlist Feature: Allow users to save items to a wishlist for future purchase
+Social Sharing: Enable users to share favorite vintage finds on social media
+Seller Profiles: Expand the platform to allow vintage sellers to create profiles and list items
+Auction Functionality: Add the ability for rare vintage pieces to be sold via auction
+Virtual Try-On: Implement AR features for virtual try-on experiences
+Vintage Authentication: Add expert authentication for high-value vintage pieces
+Acknowledgements
+Various tutorial resources that provided guidance and inspiration
+[To be updated with specific YouTube tutorials and resources used]
+Collaboration
+Interested in collaborating on Pickford & Lace? We welcome collaborators who share our passion for vintage fashion and web development. Please feel free to submit a Pull Request or reach out to discuss potential collaborations.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+License
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-
-# MERN GraphQL E-Commerce
-
-A full-stack e-commerce application built with the MERN stack (MongoDB, Express.js, React, Node.js) and GraphQL.
-
-## Description

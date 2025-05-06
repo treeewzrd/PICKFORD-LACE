@@ -1,10 +1,11 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User, Product, Category, Order } = require('../models');
 const { signToken } = require('../utils/auth');
-const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc'); // Replace with your actual Stripe test key
+const stripe = require('../utils/stripe');
 
 const resolvers = {
   Query: {
+    // Your existing queries remain unchanged
     categories: async () => {
       return await Category.find();
     },
@@ -53,46 +54,29 @@ const resolvers = {
 
       throw new AuthenticationError('Not logged in');
     },
-    checkout: async (parent, { products }, context) => {
-      const url = new URL(context.headers.referer).origin;
-      const order = new Order({ products });
-      const line_items = [];
-
-      const { products: orderProducts } = await order.populate('products');
-
-      for (let i = 0; i < orderProducts.length; i++) {
-        const product = await stripe.products.create({
-          name: orderProducts[i].name,
-          description: orderProducts[i].description,
-          images: [`${url}/images/${orderProducts[i].image}`]
-        });
-
-        const price = await stripe.prices.create({
-          product: product.id,
-          unit_amount: orderProducts[i].price * 100,
-          currency: 'usd',
-        });
-
-        line_items.push({
-          price: price.id,
-          quantity: 1
-        });
-      }
-
-      const session = await stripe.checkout.sessions.create({
-        payment_method_types: ['card'],
-        line_items,
-        mode: 'payment',
-        success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
-        cancel_url: `${url}/`
-      });
-
-      return { session: session.id };
-    }
+    // Add any other existing queries here
   },
   Mutation: {
+    // Your existing mutations remain unchanged
     addUser: async (parent, args) => {
       const user = await User.create(args);
+      const token = signToken(user);
+
+      return { token, user };
+    },
+    login: async (parent, { email, password }) => {
+      const user = await User.findOne({ email });
+
+      if (!user) {
+        throw new AuthenticationError('Incorrect credentials');
+      }
+
+      const correctPw = await user.isCorrectPassword(password);
+
+      if (!correctPw) {
+        throw new AuthenticationError('Incorrect credentials');
+      }
+
       const token = signToken(user);
 
       return { token, user };
@@ -124,23 +108,40 @@ const resolvers = {
         { new: true }
       );
     },
-    login: async (parent, { email, password }) => {
-      const user = await User.findOne({ email });
-
-      if (!user) {
-        throw new AuthenticationError('Incorrect credentials');
+    // Add the new createCheckoutSession mutation here
+    createCheckoutSession: async (parent, { products }, context) => {
+      if (!context.user) {
+        throw new AuthenticationError('You need to be logged in!');
       }
-
-      const correctPw = await user.isCorrectPassword(password);
-
-      if (!correctPw) {
-        throw new AuthenticationError('Incorrect credentials');
-      }
-
-      const token = signToken(user);
-
-      return { token, user };
-    }
+      
+      const url = new URL(context.headers.referer).origin;
+      
+      const line_items = products.map(product => {
+        return {
+          price_data: {
+            currency: 'usd',
+            product_data: {
+              name: product.name,
+              description: product.description,
+              images: [product.image]
+            },
+            unit_amount: Math.round(product.price * 100),
+          },
+          quantity: product.purchaseQuantity,
+        };
+      });
+      
+      const session = await stripe.checkout.sessions.create({
+        payment_method_types: ['card'],
+        line_items,
+        mode: 'payment',
+        success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
+        cancel_url: `${url}/cart`,
+      });
+      
+      return { session: session.id };
+    },
+    // Add any other existing mutations here
   }
 };
 

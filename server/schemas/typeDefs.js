@@ -53,6 +53,7 @@ const typeDefs = gql`
     updateUser(username: String, email: String, password: String): User
     updateProduct(_id: ID!, quantity: Int!): Product
     login(email: String!, password: String!): Auth
+    createCheckoutSession(products: [ID]!): Checkout
   }
 `;
 
