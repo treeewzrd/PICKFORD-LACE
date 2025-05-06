@@ -8,7 +8,7 @@ import Auth from '../utils/auth';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 
 // Load Stripe
-const stripePromise = loadStripe('your_stripe_publishable_key');
+const stripePromise = loadStripe('pk_test_TYRGmROdQvnmh4qeicFf0w8q00lClIxyE4');
 
 const Checkout = () => {
   const [state, dispatch] = useStoreContext();
