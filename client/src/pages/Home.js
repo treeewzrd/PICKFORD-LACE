@@ -3,6 +3,7 @@ import { Container, Row, Col, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { VintageTheme } from '../utils/theme';
 
+
 function Home() {
   return (
     <div className="home-page">
