@@ -29,9 +29,11 @@ Pickford & Lace Vintage Apparel Marketplace Pickford & Lace is a vintage clothin
 
 ## Live Demo
 
-The application is deployed and available at: [Pickford & Lace on Render](https://pickford-lace.onrender.com)
+The application is deployed and available at: [Pickford & Lace on Render](https://pickford-and-lace.onrender.com/)
+)
 
-![Application Screenshot](path/to/screenshot.png)
+![Application Screenshot](![image](https://github.com/user-attachments/assets/6b6e172f-c74a-4e6a-bd4a-8f6b67bd1ab6)
+)
 
 ## Features
 
