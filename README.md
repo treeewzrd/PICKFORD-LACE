@@ -1,6 +1,6 @@
 # Pickford & Lace: Vintage Apparel Marketplace
 
-![Pickford & Lace Logo](path/to/logo.png) <!-- Consider adding a project logo -->
+![Pickford & Lace Logo](https://private-user-images.githubusercontent.com/185113154/441101937-189a1d25-5dd9-4bbc-8ebf-e639fafd3f52.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDY2MDE0ODgsIm5iZiI6MTc0NjYwMTE4OCwicGF0aCI6Ii8xODUxMTMxNTQvNDQxMTAxOTM3LTE4OWExZDI1LTVkZDktNGJiYy04ZWJmLWU2MzlmYWZkM2Y1Mi5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNTA3JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDUwN1QwNjU5NDhaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1iMGYxZTRlZjNkYmQ2YWFlYzI2Y2U0YjczNzdmYWUwMDAyOWY4NWU5ZDA1ZGQ4NGY2NTc3YmYzZTRlYjgyM2U0JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.f-1CGPxwNG2DUZeQpvCO3q_nPbUHoXhhgjskaiS-GLg) <!-- Consider adding a project logo -->
 
 > **Pickford & Lace is a vintage clothing e-commerce platform inspired by the golden age of Hollywood  
 > and named after the iconic Mary Pickford. The application offers a curated collection of vintage apparel  
