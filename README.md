@@ -14,6 +14,7 @@
 ![GraphQL](https://img.shields.io/badge/GraphQL-%F0%9F%9A%88%20-%23444444?style=flat-square)
 ![MongoDB](https://img.shields.io/badge/MongoDB-%F0%9F%93%98%20-%234DB33D?style=flat-square)
 ![Stripe](https://img.shields.io/badge/Stripe-%F0%9F%8F%9D%20-%233D69B0?style=flat-square)
+[![Cloudinary](https://img.shields.io/badge/Cloudinary-4285F4?style=for-the-badge&logo=cloudinary&logoColor=white)](https://cloudinary.com/)
 
 ## Table of Contents
 - [Overview](#overview)
