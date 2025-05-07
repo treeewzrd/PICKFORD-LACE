@@ -237,8 +237,7 @@ The development of Pickford & Lace followed an iterative approach:
 ## Credits & Acknowledgments
 
 - **Developer**: Timothy McGrath - Full-stack development (frontend, backend, database design, deployment)
-- **AI Assistance**: Utilized Claude 3.7 and Cody for frontend development guidance and code optimization
-- **Backend Tutorial**: Based on the YouTube tutorial series [insert YouTube channel/creator name and link]
+- **AI Assistance**: Utilized Claude 3.7 and Cody for frontend development which is a mess right now
 - **Technologies**: MongoDB, Express, React, Node.js, Apollo, GraphQL, Stripe
 - **Special Thanks**: [Your instructor/advisor] for guidance throughout the development process
 
