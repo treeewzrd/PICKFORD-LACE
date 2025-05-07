@@ -29,10 +29,10 @@ Pickford & Lace Vintage Apparel Marketplace Pickford & Lace is a vintage clothin
 
 ## Live Demo
 
-The application is deployed and available at: [Pickford & Lace on Render](https://pickford-and-lace.onrender.com/)
+The application is deployed and available at: [Pickford & Lace on Render](https://pickford-and-lace.onrender.com)
 )
 
-![Application Screenshot](![image](https://github.com/user-attachments/assets/6b6e172f-c74a-4e6a-bd4a-8f6b67bd1ab6)
+![Application Screenshot](https://private-user-images.githubusercontent.com/185113154/441094995-9b9965fb-8677-4aa6-8762-5d774fb98233.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDY2MDAzMjYsIm5iZiI6MTc0NjYwMDAyNiwicGF0aCI6Ii8xODUxMTMxNTQvNDQxMDk0OTk1LTliOTk2NWZiLTg2NzctNGFhNi04NzYyLTVkNzc0ZmI5ODIzMy5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNTA3JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDUwN1QwNjQwMjZaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT03NDIzYWVkNmU5YzQ2ODU1Mzg0NDhjNzVlOWQxMDQ4ZGZkZjE1NjZjOGRlOTYzNDQyNzRlOGY1YTMyMTRhZjc2JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.xtsRpR7eDK10SXfhnfFGPkcOuV0BZdbrq6eujU7wOy4 )
 )
 
 ## Features
