@@ -1,3 +1,4 @@
+// In your App.js
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Navigation from './components/Navigation';
@@ -11,11 +12,28 @@ import Cart from './pages/Cart';
 import { GlobalProvider } from './utils/GlobalState';
 
 function App() {
+  // Define the background style directly in the component
+  const appContainerStyle = {
+    backgroundImage: `url(${process.env.PUBLIC_URL}/marymirror.jpg)`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundAttachment: 'fixed',
+    minHeight: '100vh'
+  };
+
+  const mainContentStyle = {
+    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+    padding: '20px',
+    minHeight: '80vh',
+    margin: '20px',
+    borderRadius: '8px'
+  };
+
   return (
     <GlobalProvider>
-      <div className="app-container">
+      <div className="app-container" style={appContainerStyle}>
         <Navigation />
-        <main className="main-content">
+        <main className="main-content" style={mainContentStyle}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/products" element={<Products />} />

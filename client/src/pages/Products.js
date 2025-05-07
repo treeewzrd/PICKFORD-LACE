@@ -6,6 +6,23 @@ import ProductCard from '../components/ProductCard';
 import { QUERY_PRODUCTS } from '../utils/queries';
 import { VintageTheme } from '../utils/theme';
 
+// Function to add random images to products
+const addImagesToProducts = (products) => {
+  return products.map(product => {
+    // Generate a random number between 1 and 10
+    const randomImageNum = Math.floor(Math.random() * 10) + 1;
+    
+    // Create the image path
+    const imagePath = `/${randomImageNum}.jpg`;
+    
+    // Return product with added images array
+    return {
+      ...product,
+      images: [imagePath]
+    };
+  });
+};
+
 function Products() {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
@@ -20,9 +37,89 @@ function Products() {
   const { loading, error, data } = useQuery(QUERY_PRODUCTS);
   const [filteredProducts, setFilteredProducts] = useState([]);
   
+  // Create mock products if no data is available
   useEffect(() => {
-    if (data && data.products) {
-      let filtered = [...data.products];
+    if (!data || !data.products || data.products.length === 0) {
+      const mockProducts = [
+        {
+          id: 1,
+          name: "Vintage Floral Dress",
+          category: "Women's Clothing",
+          price: 89.99,
+          era: "1970s",
+          description: "Beautiful floral pattern dress from the 70s"
+        },
+        {
+          id: 2,
+          name: "Denim Jacket",
+          category: "Men's Clothing",
+          price: 65.99,
+          era: "1980s",
+          description: "Classic denim jacket with distressed details"
+        },
+        {
+          id: 3,
+          name: "Leather Handbag",
+          category: "Accessories",
+          price: 45.99,
+          era: "1960s",
+          description: "Genuine leather handbag with gold hardware"
+        },
+        {
+          id: 4,
+          name: "Silk Scarf",
+          category: "Accessories",
+          price: 28.99,
+          era: "1950s",
+          description: "Elegant silk scarf with floral pattern"
+        },
+        {
+          id: 5,
+          name: "Wool Coat",
+          category: "Women's Clothing",
+          price: 120.99,
+          era: "1960s",
+          description: "Warm wool coat perfect for winter"
+        },
+        {
+          id: 6,
+          name: "Vintage Sunglasses",
+          category: "Accessories",
+          price: 35.99,
+          era: "1980s",
+          description: "Classic aviator sunglasses"
+        },
+        {
+          id: 7,
+          name: "Leather Boots",
+          category: "Shoes",
+          price: 95.99,
+          era: "1970s",
+          description: "Genuine leather boots with side zipper"
+        },
+        {
+          id: 8,
+          name: "Pearl Necklace",
+          category: "Jewelry",
+          price: 55.99,
+          era: "1950s",
+          description: "Elegant pearl necklace with gold clasp"
+        }
+      ];
+      
+      // Add random images to mock products
+      const productsWithImages = addImagesToProducts(mockProducts);
+      setFilteredProducts(productsWithImages);
+    }
+  }, [data]);
+  
+  // Filter products based on user selections
+  useEffect(() => {
+    if (data && data.products && data.products.length > 0) {
+      // Add images to products from API
+      let productsWithImages = addImagesToProducts(data.products);
+      
+      let filtered = [...productsWithImages];
       
       if (filters.category) {
         filtered = filtered.filter(product => 
