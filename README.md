@@ -7,6 +7,18 @@
 > that bridges the gap between rags and riches - from delicate lace pieces and frilly feminine garments  
 > to rugged menswear including vintage tees, motorcycle gear, boots, and distressed workwear.**
 
+![License](https://img.shields.io/badge/License-MIT%20%F0%9F%9A%80%20-%23FF5733?style=flat-square)
+![Status](https://img.shields.io/badge/Status-In%20Progress-%23C70039?style=flat-square)
+![Deploy](https://img.shields.io/badge/Deployed-Render%20%F0%9F%9A%A8-%232D76C9?style=flat-square)
+![Built With](https://img.shields.io/badge/Built%20With-React%20%7C%20Node%20%7C%20MongoDB-%236F42C1?style=flat-square)
+![PRs Welcome](https://img.shields.io/badge/PRs%20Welcome-%F0%9F%8F%94%20-%23FF6F61?style=flat-square)
+![Tech Stack](https://img.shields.io/badge/Tech%20Stack-%23C0C0C0%20React%20%7C%20Node.js%20%7C%20GraphQL%20-%232b2b2b?style=flat-square)
+![GraphQL](https://img.shields.io/badge/GraphQL-%F0%9F%9A%88%20-%23444444?style=flat-square)
+![MongoDB](https://img.shields.io/badge/MongoDB-%F0%9F%93%98%20-%234DB33D?style=flat-square)
+![Stripe](https://img.shields.io/badge/Stripe-%F0%9F%8F%9D%20-%233D69B0?style=flat-square)
+![Cloudinary](https://img.shields.io/badge/Cloudinary-%F0%9F%93%B8%20-%237B7A7A?style=flat-square)
+
+
 ## Table of Contents
 - [Overview](#overview)
 - [Live Demo](#live-demo)
