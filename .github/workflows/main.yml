@@ -14,20 +14,40 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '16'
-        
-    - name: Install Dependencies
+        node-version: '18'  # Updated to Node 18 LTS
+    
+    - name: Install Dependencies and Fix bcrypt
       run: |
+        # Install dependencies
         npm install
-        cd client && npm install
-        cd ../server && npm install
         
+        # Replace bcrypt with bcryptjs
+        npm uninstall bcrypt
+        npm install bcryptjs
+        
+        # Find and replace bcrypt with bcryptjs in all server JS files
+        find ./server -type f -name "*.js" -exec sed -i 's/require(['\''"]bcrypt['\''"])/require("bcryptjs")/g' {} \;
+        
+        # Install client dependencies
+        cd client && npm install
+        
+        # Return to root directory
+        cd ..
+    
     - name: Build React App
       run: |
         cd client
         npm run build
-        
+    
     - name: Test
       run: |
         cd client
         npm test -- --passWithNoTests
+    
+    - name: Create production package.json
+      run: |
+        # Add Node.js version to package.json
+        node -e "const pkg=require('./package.json'); pkg.engines={node:'18.x'}; require('fs').writeFileSync('package.json', JSON.stringify(pkg, null, 2))"
+        
+        # Create .npmrc file to avoid native module issues
+        echo "node-gyp-binary=false" > .npmrc
