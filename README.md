@@ -1,11 +1,23 @@
 # Pickford & Lace: Vintage Apparel Marketplace
 
-![Pickford & Lace Logo](path/to/logo.png) <!-- Consider adding a project logo -->
+![Pickford & Lace Logo](https://private-user-images.githubusercontent.com/185113154/441101937-189a1d25-5dd9-4bbc-8ebf-e639fafd3f52.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDY2MDE0ODgsIm5iZiI6MTc0NjYwMTE4OCwicGF0aCI6Ii8xODUxMTMxNTQvNDQxMTAxOTM3LTE4OWExZDI1LTVkZDktNGJiYy04ZWJmLWU2MzlmYWZkM2Y1Mi5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNTA3JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDUwN1QwNjU5NDhaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1iMGYxZTRlZjNkYmQ2YWFlYzI2Y2U0YjczNzdmYWUwMDAyOWY4NWU5ZDA1ZGQ4NGY2NTc3YmYzZTRlYjgyM2U0JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.f-1CGPxwNG2DUZeQpvCO3q_nPbUHoXhhgjskaiS-GLg) <!-- Consider adding a project logo -->
 
 > **Pickford & Lace is a vintage clothing e-commerce platform inspired by the golden age of Hollywood  
 > and named after the iconic Mary Pickford. The application offers a curated collection of vintage apparel  
 > that bridges the gap between rags and riches - from delicate lace pieces and frilly feminine garments  
 > to rugged menswear including vintage tees, motorcycle gear, boots, and distressed workwear.**
+
+![License](https://img.shields.io/badge/License-MIT%20%F0%9F%9A%80%20-%23FF5733?style=flat-square)
+![Status](https://img.shields.io/badge/Status-In%20Progress-%23C70039?style=flat-square)
+![Deploy](https://img.shields.io/badge/Deployed-Render%20%F0%9F%9A%A8-%232D76C9?style=flat-square)
+![Built With](https://img.shields.io/badge/Built%20With-React%20%7C%20Node%20%7C%20MongoDB-%236F42C1?style=flat-square)
+![PRs Welcome](https://img.shields.io/badge/PRs%20Welcome-%F0%9F%8F%94%20-%23FF6F61?style=flat-square)
+![Tech Stack](https://img.shields.io/badge/Tech%20Stack-%23C0C0C0%20React%20%7C%20Node.js%20%7C%20GraphQL%20-%232b2b2b?style=flat-square)
+![GraphQL](https://img.shields.io/badge/GraphQL-%F0%9F%9A%88%20-%23444444?style=flat-square)
+![MongoDB](https://img.shields.io/badge/MongoDB-%F0%9F%93%98%20-%234DB33D?style=flat-square)
+![Stripe](https://img.shields.io/badge/Stripe-%F0%9F%8F%9D%20-%233D69B0?style=flat-square)
+![Cloudinary](https://img.shields.io/badge/Cloudinary-%F0%9F%93%B8%20-%237B7A7A?style=flat-square)
+
 
 ## Table of Contents
 - [Overview](#overview)
@@ -51,13 +63,13 @@ The application is deployed and available at: [Pickford & Lace on Render](https:
 
 ## Screenshots
 
-![Home Page](path/to/home-screenshot.png)
+![Home Page](https://private-user-images.githubusercontent.com/185113154/441098211-5d8f3646-75f9-498a-b0fe-df18c7fbda98.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDY2MDA4NDcsIm5iZiI6MTc0NjYwMDU0NywicGF0aCI6Ii8xODUxMTMxNTQvNDQxMDk4MjExLTVkOGYzNjQ2LTc1ZjktNDk4YS1iMGZlLWRmMThjN2ZiZGE5OC5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNTA3JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDUwN1QwNjQ5MDdaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1lNDc2Y2ZiNjljYWRlNWQ2MzU3YWY2NDdiZjdjZmRiZjcxMDUwODFiMTI5OWMxNzNlODg4MjJiYjBiNTVkOTQyJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.fP-bhsBipn4GwJQ4uv6IIrX1ll57Targrp-i3euRqIE))
 *The main landing page showcasing the range from delicate lace to rugged vintage workwear*
 
-![Product Detail](path/to/product-screenshot.png)
+![Product Detail](https://private-user-images.githubusercontent.com/185113154/441098181-f6f8d91f-ed5e-413c-bc79-b33778719136.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDY2MDA4NDcsIm5iZiI6MTc0NjYwMDU0NywicGF0aCI6Ii8xODUxMTMxNTQvNDQxMDk4MTgxLWY2ZjhkOTFmLWVkNWUtNDEzYy1iYzc5LWIzMzc3ODcxOTEzNi5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNTA3JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDUwN1QwNjQ5MDdaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0zM2I5NmZlZjhjYzIyNzg2MDZiYTY0YjY5YzAyYzY1YzQ4NGM1M2FiMWRmYmY2ZmU5MTEwM2JjZjRlMWE2ZTVhJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.R39w5NZVbeAM00jz6Bv9yQpqqWWmO94oh78P96QWKFQ))
 *Detailed product view with multiple images, sizing information, and condition details*
 
-![Shopping Cart](path/to/cart-screenshot.png)
+![Shopping Cart](https://private-user-images.githubusercontent.com/185113154/441098231-4d993e9b-71da-43bb-a5f1-f968cafc8833.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDY2MDA4NDcsIm5iZiI6MTc0NjYwMDU0NywicGF0aCI6Ii8xODUxMTMxNTQvNDQxMDk4MjMxLTRkOTkzZTliLTcxZGEtNDNiYi1hNWYxLWY5NjhjYWZjODgzMy5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNTA3JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDUwN1QwNjQ5MDdaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0xNzk3M2Q1NWUxOGIzMDQ0ZmZkZWYwYjY0MTQyNjI4YjRkNzdlZWY0NDI5NDIzZDIxNmY3NjFmODUxMTgxODc5JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.RWSDy1OBCVaPXnWYM1DI3ggtYADcj1aOaCHCPD2gwXA))
 *User shopping cart with checkout options*
 
 ## Technologies Used
