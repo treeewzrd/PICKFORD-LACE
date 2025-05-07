@@ -10,7 +10,7 @@ const Footer = () => {
       <Container>
         <Row>
           <Col md={4} className="mb-4 mb-md-0">
-            <h5>Vintage Clothing</h5>
+            <h5>Pickford & Lace</h5>
             <p>
               Discover timeless fashion pieces from the past. Our curated collection 
               brings you the best vintage clothing from every era.
@@ -35,9 +35,9 @@ const Footer = () => {
             <h5>Shop</h5>
             <ul className="list-unstyled">
               <li><Link to="/products">All Products</Link></li>
-              <li><Link to="/products?category=1">Women's</Link></li>
-              <li><Link to="/products?category=2">Men's</Link></li>
-              <li><Link to="/products?category=3">Accessories</Link></li>
+              <li><Link to="/category/womens">Women's</Link></li>
+              <li><Link to="/category/mens">Men's</Link></li>
+              <li><Link to="/category/accessories">Accessories</Link></li>
             </ul>
           </Col>
           
@@ -51,14 +51,37 @@ const Footer = () => {
           </Col>
           
           <Col md={4}>
-            <h5>Newsletter</h5>
-            <p>Subscribe to receive updates on new arrivals and special promotions.</p>
+            <h5>Shop With Us</h5>
+            <div className="shop-platforms">
+              <a href="https://www.etsy.com/shop/PickfordandLaceShop" target="_blank" rel="noopener noreferrer" className="platform-link">
+                <img src={etsyLogo} alt="Etsy Shop" className="platform-logo" />
+                <span>Etsy</span>
+              </a>
+              
+              <a href="https://www.ebay.com/usr/pickfordandlacevintage/Women/_i.html?_sacat=260010" target="_blank" rel="noopener noreferrer" className="platform-link">
+                <img src={ebayLogo} alt="eBay Store" className="platform-logo" />
+                <span>eBay</span>
+              </a>
+              
+              <a href="https://www.depop.com/pickfordandlace/" target="_blank" rel="noopener noreferrer" className="platform-link">
+                <img src={depopLogo} alt="Depop Shop" className="platform-logo" />
+                <span>Depop</span>
+              </a>
+              
+              <a href="https://poshmark.com/closet/pickfordandlace" target="_blank" rel="noopener noreferrer" className="platform-link">
+                <img src={poshmarkLogo} alt="Poshmark Closet" className="platform-logo" />
+                <span>Poshmark</span>
+              </a>
+            </div>
+            
+            <h5 className="mt-4">Newsletter</h5>
+            <p>Subscribe for updates on new arrivals and promotions.</p>
             <form className="newsletter-form">
               <div className="input-group">
-                <input 
-                  type="email" 
-                  className="form-control" 
-                  placeholder="Your email address" 
+                <input
+                  type="email"
+                  className="form-control"
+                  placeholder="Your email address"
                   required
                 />
                 <button className="btn btn-primary" type="submit">
@@ -74,7 +97,7 @@ const Footer = () => {
         <Row>
           <Col className="text-center">
             <p className="mb-0">
-              &copy; {new Date().getFullYear()} Vintage Clothing. All rights reserved.
+              &copy; {new Date().getFullYear()} Pickford & Lace Vintage. All rights reserved.
             </p>
           </Col>
         </Row>
