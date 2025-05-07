@@ -43,6 +43,14 @@ if (!process.env.JWT_SECRET) {
   console.warn('⚠️ JWT_SECRET not set! Using default value');
   process.env.JWT_SECRET = 'dev-jwt-secret';
 }
+// Add other important environment variables
+if (!process.env.MONGODB_URI) {
+    console.warn('⚠️ MONGODB_URI not set! Using default value');
+    // For Render, we should use a valid MongoDB Atlas URI as fallback
+    process.env.MONGODB_URI = 'mongodb+srv://placeholder:placeholder@cluster.mongodb.net/ecommerce?retryWrites=true&w=majority';
+    console.warn('⚠️ Using placeholder MongoDB URI - this will not work! Please set a real MONGODB_URI in environment variables.');
+  }
+  
 
 // Ensure we use the correct PORT
 process.env.PORT = process.env.PORT || '3001';
