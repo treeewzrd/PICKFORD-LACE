@@ -248,5 +248,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 Timothy McGrath - [your.email@example.com]
 
-Project Link: [Github](https://github.com/treeewzrd/PICKFORD-LACE)
-[Pickford & Lace On Render](https://pickford-and-lace.onrender.com)
+Project Links: 
+[Github](https://github.com/treeewzrd/PICKFORD-LACE)
+[Pickford&Lace](https://pickford-and-lace.onrender.com)
