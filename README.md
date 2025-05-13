@@ -246,7 +246,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Contact
 
-Timothy McGrath - [your.email@example.com]
+[Timothy McGrath](treewzrd@gmail.com)
 
 Project Links: 
 [Github](https://github.com/treeewzrd/PICKFORD-LACE)
