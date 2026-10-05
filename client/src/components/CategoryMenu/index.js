@@ -1,25 +1,12 @@
-import React, { useEffect } from 'react';
-import { useQuery } from '@apollo/client';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import { useStoreContext } from '../../utils/GlobalState';
-import {
-  UPDATE_CATEGORIES,
-  UPDATE_CURRENT_CATEGORY,
-} from '../../utils/actions';
-import { QUERY_CATEGORIES } from '../../utils/queries';
+import { UPDATE_CURRENT_CATEGORY } from '../../utils/actions';
+import { Row, Col, Card } from 'react-bootstrap';
+import './style.css';
 
-function CategoryMenu() {
-  const [state, dispatch] = useStoreContext();
-  const { categories } = state;
-  const { loading, data: categoryData } = useQuery(QUERY_CATEGORIES);
-
-  useEffect(() => {
-    if (categoryData) {
-      dispatch({
-        type: UPDATE_CATEGORIES,
-        categories: categoryData.categories,
-      });
-    }
-  }, [categoryData, dispatch]);
+function CategoryMenu({ categories }) {
+  const [, dispatch] = useStoreContext();
 
   const handleClick = (id) => {
     dispatch({
@@ -29,19 +16,23 @@ function CategoryMenu() {
   };
 
   return (
-    <div>
-      <h2>Choose a Category:</h2>
-      {categories.map((item) => (
-        <button
-          key={item._id}
-          onClick={() => {
-            handleClick(item._id);
-          }}
-        >
-          {item.name}
-        </button>
+    <Row className="category-menu">
+      {categories.map((category) => (
+        <Col key={category._id} xs={6} md={3} className="mb-4">
+          <Link 
+            to={`/products?category=${category._id}`} 
+            onClick={() => handleClick(category._id)}
+            className="text-decoration-none"
+          >
+            <Card className="category-card text-center h-100">
+              <Card.Body className="d-flex flex-column justify-content-center">
+                <Card.Title>{category.name}</Card.Title>
+              </Card.Body>
+            </Card>
+          </Link>
+        </Col>
       ))}
-    </div>
+    </Row>
   );
 }
 

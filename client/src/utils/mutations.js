@@ -67,3 +67,10 @@ export const UPDATE_PRODUCT = gql`
   }
 `;
 
+export const CREATE_CHECKOUT_SESSION = gql`
+  mutation createCheckoutSession($products: [ID]!) {
+    createCheckoutSession(products: $products) {
+      session
+    }
+  }
+`;
