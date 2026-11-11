@@ -4,7 +4,7 @@
 
 Pickford & Lace is a storefront I'm developing for my part-time vintage clothing business. The project connects a React shopping interface to a Node.js/Express GraphQL API, MongoDB-backed catalog and account data, and a Stripe-hosted credit-card checkout flow. This repository is both a working development project and the foundation for the store's online sales platform.
 
-**Status:** In development. A deployment configuration and a [Render demo](https://pickford-and-lace.onrender.com) are available, but the presence of a deployment does not imply every business workflow is production-ready.
+**Status:** In development. A deployment configuration and a [Render demo](https://pickford-and-lace.onrender.com) are available, Development is ongoing at a reduced pace while I prioritize application security and other technical projects. I intend to continue refining the platform before integrating it into my business.
 
 ## Implemented in the repository
 
@@ -29,8 +29,6 @@ Payment processing is handled through **Stripe Checkout**; the application does 
 | Authentication | JWT, bcryptjs |
 | Payments | Stripe Checkout |
 | Deployment | Render |
-
-The earlier project documentation also references Cloudinary for product imagery; integration details should be confirmed against the currently deployed build before calling that production-ready.
 
 ## Local development
 
